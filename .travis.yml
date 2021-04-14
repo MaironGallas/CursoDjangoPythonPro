@@ -1,9 +1,13 @@
 language: python
 python:
   - 3.9
+env:
+  global:
+    - PIPENV_VENV_IN_GLOBAL=1
+    - PIPENV_IGNORE_VIRTUALENVS=1
 install:
-  - pip install -q pipenv
-  - pipenv sync --dev
+  - pip install pipenv
+  - pipenv sync -d
 script:
   - pipenv run flake8
   #- pipenv run pytest libpythonpro --cov=libpythonpro/tests
